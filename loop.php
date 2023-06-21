@@ -1,15 +1,18 @@
 <?php if (have_posts()) : ?>
     <?php while (have_posts()) : the_post(); ?>
-        <div class="blog-post">
-            <h2 class="blog-post-title"><?php the_title(); ?></h2>
-            <p class="blog-post-meta"><?php the_time('d/m/Y'); ?> par <?php the_author(); ?></p>
-            <?php (is_singular()) ? the_content() : the_excerpt(); ?>
-            <?php if (!is_singular()) : ?>
-                <p><a href="<?php the_permalink(); ?>" class="btn btn-primary">Lire la suite</a></p>
-            <?php endif; ?>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><?php the_title() ?></h5>
+                <h6 class="cart-subtitle mb-2 tex-muted"><?php the_category() ?></h6>
+                <p class="card-text">Some quick example text.
+                    <?php the_content() ?> </p>
+                <a href="<?php the_permalink(); ?>" class="btn btn-primary">Voir plus</a>
+            </div>
         </div>
     <?php endwhile; ?>
-    <div id="pagination">
-        <?php echo paginate_links(); ?>
-    </div>
+<?php else: ?>
+    <h1>Pas d'articles</h1>
+
 <?php endif; ?>
+
+

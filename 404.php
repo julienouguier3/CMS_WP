@@ -1,3 +1,3 @@
 <?php get_header() ?>
-<?php get_template_part('loop'); ?>
+<h1>404</h1>
 <?php get_footer(); ?>
