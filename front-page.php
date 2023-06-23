@@ -3,6 +3,11 @@
 <?php get_header() ?>
 
 
-<?php get_template_part('loop'); ?>
+<h1>Accueil</h1>
+<div class="container">
+    <div class="row">
+        <?= get_search_form() ?></div>
+</div>
+
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

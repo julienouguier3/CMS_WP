@@ -9,16 +9,6 @@
 
 <div class="container">
     <!-- Header -->
-    <header class="blog-header py-3">
-        <div class="row flex-nowrap justify-content-between align-items-center">
-            <div class="col-12 text-center">
-                <a class="blog-header-logo text-dark" href="<?php bloginfo('url'); ?>"><?php bloginfo('name') ?></a>
-            </div>
-        </div>
-    </header>
-    <!-- Fin du header -->
-
-    <!-- Menu header -->
     <nav class="navbar navbar-expand-md navbar-light" role="navigation">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-menu" aria-controls="#header-menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,5 +27,20 @@
                 'walker'            => new WP_Bootstrap_Navwalker()
             ));
             ?>
+            <?= get_search_form() ?>
         </div>
+
     </nav>
+    <!-- Fin du header -->
+
+    <!-- Menu header -->
+    <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+
+            <div class="col-12 text-center">
+                <a class="blog-header-logo text-dark" href="<?php bloginfo('url'); ?>"><?php bloginfo('name') ?></a>
+
+            </div>
+        </div>
+
+    </header>
