@@ -4,14 +4,15 @@ function filter()
     add_theme_support('title-tag');
     add_theme_support('menus');
     add_theme_support('post-thumbnails');
+    add_theme_support('custom-header');
 }
 
-function montheme_title_separator()
+function title_separator($sep)
 {
     return '|';
 }
 
-function montheme_document_title_parts($title)
+function document_title_parts($title)
 {
     $title['wp'] = '🌊';
     $title = array_reverse($title);
@@ -63,9 +64,37 @@ function register_my_menu()
 }
 
 
+function register_my_sidebars()
+{
+    register_sidebar([
+        'name' => "Sidebar principale",
+        'id' => 'main-sidebar',
+        'description' => "La sidebar principale",
+        'before_widget' => '<div id="%1$s" class="widget %2$s p-4">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title font-italic">',
+        'after_title' => '</h4>',
+    ]);
+
+    register_sidebar(
+        array(
+            'name' => "Sidebar du footer",
+            'id' => 'footer-sidebar',
+            'description' => "La sidebar principale",
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget' => '</div>',
+            'before_title' => '<h2 class="widget-title">',
+            'after_title' => '</h2>'
+        )
+    );
+}
+
+
+//add_action('init', 'montheme_init');
 add_action( 'after_setup_theme', 'filter' );
 add_action('wp_enqueue_scripts', 'wpbootstrap_styles_scripts');
 add_action( 'wp_enqueue_scripts', 'register_assets' );
 add_action( 'after_setup_theme', 'register_my_menu' );
-add_filter('document_title_separator','montheme_title_separator');
-add_filter('document_title_parts','montheme_document_title_parts');
+add_filter('document_title_separator','title_separator');
+add_filter('document_title_parts','document_title_parts');
+add_action('widgets_init', 'register_my_sidebars');
