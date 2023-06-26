@@ -88,7 +88,7 @@ function register_my_sidebars()
         )
     );
 }
-//Créer onglet service
+//Insertion des services en bo
 function register_post_types() {
 
     // CPT Services
