@@ -88,6 +88,33 @@ function register_my_sidebars()
         )
     );
 }
+//Créer onglet service
+function register_post_types() {
+
+    // CPT Services
+    $labels = array(
+        'name' => 'Services',
+        'all_items' => 'Tous les services',  // affiché dans le sous menu
+        'singular_name' => 'Service',
+        'add_new_item' => 'Ajouter un service',
+        'edit_item' => 'Modifier le service',
+        'menu_name' => 'Services'
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'show_in_rest' => true,
+        'has_archive' => true,
+        'supports' => array( 'title', 'editor','thumbnail' ),
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-admin-customizer',
+    );
+
+    register_post_type( 'services', $args );
+}
+
+
 
 
 //add_action('init', 'montheme_init');
@@ -98,3 +125,4 @@ add_action( 'after_setup_theme', 'register_my_menu' );
 add_filter('document_title_separator','title_separator');
 add_filter('document_title_parts','document_title_parts');
 add_action('widgets_init', 'register_my_sidebars');
+add_action( 'init', 'register_post_types' ); // Le hook init lance la fonction
