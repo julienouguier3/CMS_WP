@@ -22,10 +22,10 @@
             ?>
         </div>
     </nav>
-    <p>Thème <a href="https://getbootstrap.com/">Bootstrap</a> pour WordPress par <a href="https://www.tutowp.fr/tutowp">TutoWP.fr</a>.</p>
-    <p>
-        <a href="#">Retour en haut</a>
-    </p>
+<!--    <p>Thème <a href="https://getbootstrap.com/">Bootstrap</a> pour WordPress par <a href="https://www.tutowp.fr/tutowp">TutoWP.fr</a>.</p>-->
+<!--    <p>-->
+<!--        <a href="#">Retour en haut</a>-->
+<!--    </p>-->
 </footer>
 <?php wp_footer(); ?>
 </body>

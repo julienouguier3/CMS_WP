@@ -1,4 +1,4 @@
-<!--Mise en forme page contact + loop-->
+<!--Une partie de la page contact-->
 <?php
 $title = get_field('titre','contacts');
 $shortDesc = get_field('short_description');
