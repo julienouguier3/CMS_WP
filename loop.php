@@ -23,8 +23,6 @@
             </div>
         <?php endif; ?>
     <?php endwhile; ?>
-    <div id="pagination">
-        <?php echo paginate_links(); ?>
-    </div>
+
 <?php endif; ?>
 

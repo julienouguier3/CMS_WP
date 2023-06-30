@@ -18,6 +18,7 @@ function document_title_parts($title)
     $title = array_reverse($title);
     return $title;
 }
+
 function wpbootstrap_styles_scripts()
 {
     wp_enqueue_style('style', get_stylesheet_uri());
@@ -75,21 +76,17 @@ function register_my_sidebars()
         'before_title' => '<h4 class="widget-title font-italic">',
         'after_title' => '</h4>',
     ]);
-
-    register_sidebar(
-        array(
-            'name' => "Sidebar du footer",
-            'id' => 'footer-sidebar',
-            'description' => "La sidebar principale",
-            'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget' => '</div>',
-            'before_title' => '<h2 class="widget-title">',
-            'after_title' => '</h2>'
-        )
-    );
 }
+
+require_once get_template_directory() . '/CNAlpsWeather.php';
+function register_my_widgets()
+{
+    register_widget(CNAlpsWeather::class);
+}
+
 //Insertion des services en bo
-function register_post_types() {
+function register_post_types()
+{
 
     // CPT Services
     $labels = array(
@@ -106,23 +103,22 @@ function register_post_types() {
         'public' => true,
         'show_in_rest' => true,
         'has_archive' => true,
-        'supports' => array( 'title', 'editor','thumbnail' ),
+        'supports' => array('title', 'editor', 'thumbnail'),
         'menu_position' => 5,
         'menu_icon' => 'dashicons-admin-customizer',
     );
 
-    register_post_type( 'services', $args );
+    register_post_type('services', $args);
 }
 
 
-
-
 //add_action('init', 'montheme_init');
-add_action( 'after_setup_theme', 'filter' );
+add_action('after_setup_theme', 'filter');
 add_action('wp_enqueue_scripts', 'wpbootstrap_styles_scripts');
-add_action( 'wp_enqueue_scripts', 'register_assets' );
-add_action( 'after_setup_theme', 'register_my_menu' );
-add_filter('document_title_separator','title_separator');
-add_filter('document_title_parts','document_title_parts');
+add_action('wp_enqueue_scripts', 'register_assets');
+add_action('after_setup_theme', 'register_my_menu');
+add_filter('document_title_separator', 'title_separator');
+add_filter('document_title_parts', 'document_title_parts');
 add_action('widgets_init', 'register_my_sidebars');
-add_action( 'init', 'register_post_types' ); // Le hook init lance la fonction
+add_action('init', 'register_post_types'); // Le hook init lance la fonction
+add_action('widgets_init', 'register_my_widgets');
